@@ -29,27 +29,23 @@ public class JSONReadFromTheFileTest {
                 e.printStackTrace();
             }
 
-            return valA.compareTo(valB);
-         }
-         });
+		int compareVal = valA.compareTo(valB);
+            if(compareVal == 0) {
+			KEY_NAME = "name";
 
-	   Collections.sort(jsonArray, new Comparator<JSONObject>() {
-         private static final String KEY_NAME = "name";
+           	      try {
+                		valA = (String) a.get(KEY_NAME);
+                		valB = (String) b.get(KEY_NAME);
+            	} 
+            	catch (JSONException e) {
+                		e.printStackTrace();
+            	}
 
-         @Override
-         public int compare(JSONObject a, JSONObject b) {
-            String valA = new String();
-            String valB = new String();
-
-            try {
-                valA = (String) a.get(KEY_NAME);
-                valB = (String) b.get(KEY_NAME);
-            } 
-            catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            return valA.compareTo(valB);
+            	return valA.compareTo(valB);
+		}
+		else {
+			return compareVal;
+		}
          }
          });
 		
